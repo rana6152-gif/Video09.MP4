@@ -1,13 +1,335 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Loading...</title>
-    <meta http-equiv="refresh" content="0; url=https://smallbruisedfollowing.com/c6euguwhi?key=1cc2566edc015a8fa8f3c7df65b12c97">
-    <script>
-        window.location.href = "https://smallbruisedfollowing.com/c6euguwhi?key=1cc2566edc015a8fa8f3c7df65b12c97";
-    </script>
+    <meta charset="UTF-8">
+    <!-- This meta tag ensures it behaves like a desktop site on mobile, allowing zoom out -->
+    <meta name="viewport" content="width=1000">
+    <title>Wait 10 Second & Enjoy Video</title>
+    <!-- Importing a nice font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- 1. RESET & BASIC STYLES --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f2f5; /* Light gray background */
+            color: #333;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        /* --- 2. LAYOUT CONTAINER --- */
+        /* We fix the width to 1000px to force desktop view on all devices */
+        .container {
+            width: 1000px; 
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- 3. HEADER STYLES --- */
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 24px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* --- 4. AD BOX STYLING (For Placeholders) --- */
+        .ad-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border: 2px dashed #cfd8dc;
+            background-color: #fafafa;
+            color: #78909c;
+            font-size: 14px;
+            font-weight: 600;
+            margin: 10px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            overflow: hidden; /* Ensures ads don't break layout */
+        }
+
+        .ad-box:hover {
+            background-color: #f1f8e9;
+            border-color: #aed581;
+            color: #558b2f;
+        }
+
+        /* --- 5. SPECIFIC LAYOUT GRIDS --- */
+        
+        /* --- TOP BANNER CONTAINER (Adsterra 728x90) --- */
+        .top-banner-ad {
+            height: 90px; 
+            width: 728px;
+            margin: 10px auto; /* Centers the ad */
+            overflow: hidden;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Main Content Area (Split into Left Column and Right Sidebar) */
+        .main-body {
+            display: flex;
+            padding: 0 10px;
+        }
+
+        /* Left Column (Width: ~70%) */
+        .left-column {
+            width: 70%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Top row of Left Column (Square Ad + Redirect Box) */
+        .left-top-row {
+            display: flex;
+            height: 250px;
+            margin-bottom: 10px;
+        }
+
+        /* Square Ad 300x250 Container */
+        .square-ad {
+            width: 300px;
+            height: 250px;
+            margin: 0 10px 0 0; 
+            flex-shrink: 0;
+            overflow: hidden; /* Ensures the iframe ad fits perfectly */
+            background: #fff;
+        }
+
+        /* The 10 Second Redirect Box */
+        .redirect-box {
+            flex-grow: 1;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+            border: none;
+            color: #444;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(255, 154, 158, 0.3);
+            margin: 0;
+            height: 100%;
+        }
+
+        .redirect-box h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #d81b60;
+        }
+
+        .timer-display {
+            font-size: 48px;
+            font-weight: 700;
+            color: #fff;
+            background: #d81b60;
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            border-radius: 50%;
+            margin-top: 10px;
+            box-shadow: 0 4px 10px rgba(216, 27, 96, 0.4);
+        }
+
+        /* --- NATIVE BANNER CONTAINER (Adsterra) --- */
+        .native-banner-container {
+            min-height: 180px; /* Allows container to grow if ad is taller */
+            width: 100%;
+            margin: 0;
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;       /* Flex to center the ad if it's smaller */
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Right Column (Sidebar - Width: ~30%) */
+        .right-column {
+            width: 30%;
+            padding-left: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- SIDEBAR AD 160x300 CONTAINER (Adsterra) --- */
+        .sidebar-ad {
+            width: 160px;
+            height: 300px;
+            margin: 0 auto; /* Centers the ad inside the column */
+            overflow: hidden; 
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* --- BOTTOM BANNER CONTAINER (Adsterra 468x60) --- */
+        .bottom-banner-ad {
+            height: 60px;
+            width: 468px;
+            margin: 10px auto; /* Centers the ad */
+            background: #fff;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* --- 6. UTILITIES --- */
+        .label {
+            font-size: 12px;
+            text-transform: uppercase;
+            opacity: 0.7;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+    </style>
 </head>
 <body>
-    <p style="color:white; text-align:center; margin-top:100px;">Redirecting...</p>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">WEBSITE DEMO</div>
+
+        <!-- TOP RESPONSIVE BANNER 728x90 (Adsterra Code) -->
+        <div class="top-banner-ad">
+            <script>
+              atOptions = {
+                'key' : 'c7bda6aadbe42913548b91f3b7e69be8',
+                'format' : 'iframe',
+                'height' : 90,
+                'width' : 728,
+                'params' : {}
+              };
+            </script>
+            <script src="https://smallbruisedfollowing.com/c7bda6aadbe42913548b91f3b7e69be8/invoke.js"></script>
+        </div>
+
+        <!-- Main Body Content -->
+        <div class="main-body">
+            
+            <!-- LEFT COLUMN (70%) -->
+            <div class="left-column">
+                
+                <!-- Top Row: Square Ad & Redirect -->
+                <div class="left-top-row">
+                    
+                    <!-- SQUARE AD 300x250 (Adsterra Code) -->
+                    <div class="square-ad">
+                        <script>
+                          atOptions = {
+                            'key' : '143de6a2c04d1ae15b25ddab83aa1948',
+                            'format' : 'iframe',
+                            'height' : 250,
+                            'width' : 300,
+                            'params' : {}
+                          };
+                        </script>
+                        <script src="https://smallbruisedfollowing.com/143de6a2c04d1ae15b25ddab83aa1948/invoke.js"></script>
+                    </div>
+
+                    <!-- Redirect Logic Box -->
+                    <div class="redirect-box">
+                        <h2>Redirecting...</h2>
+                        <p>Count 10 Seconds then Redirect</p>
+                        <div class="timer-display" id="countdown">10</div>
+                        <p style="font-size: 12px; margin-top: 10px; color: #555;">Please wait...</p>
+                    </div>
+                </div>
+
+                <!-- NATIVE BANNER AD CODE START (Adsterra) -->
+                <div class="native-banner-container">
+                    <!-- Adsterra Script -->
+                    <script async="async" data-cfasync="false" src="https://smallbruisedfollowing.com/4c07ce7afb4001f8cbafe4820f045d8b/invoke.js"></script>
+                    <!-- Adsterra Container -->
+                    <div id="container-4c07ce7afb4001f8cbafe4820f045d8b"></div>
+                </div>
+                <!-- NATIVE BANNER AD CODE END -->
+
+            </div>
+
+            <!-- RIGHT COLUMN (30%) -->
+            <div class="right-column">
+                <!-- SIDEBAR AD 160x300 (Adsterra Code) -->
+                <div class="sidebar-ad">
+                    <script>
+                      atOptions = {
+                        'key' : '7833a364452c9f5b5173bb02176a5959',
+                        'format' : 'iframe',
+                        'height' : 300,
+                        'width' : 160,
+                        'params' : {}
+                      };
+                    </script>
+                    <script src="https://smallbruisedfollowing.com/7833a364452c9f5b5173bb02176a5959/invoke.js"></script>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- BOTTOM RESPONSIVE BANNER 468x60 (Adsterra Code) -->
+        <div class="bottom-banner-ad">
+            <script>
+              atOptions = {
+                'key' : '195ec8aec53b3117af913a02a900c074',
+                'format' : 'iframe',
+                'height' : 60,
+                'width' : 468,
+                'params' : {}
+              };
+            </script>
+            <script src="https://smallbruisedfollowing.com/195ec8aec53b3117af913a02a900c074/invoke.js"></script>
+        </div>
+
+    </div>
+
+    <!-- JAVASCRIPT FOR REDIRECT TIMER -->
+    <script>
+        // Set the countdown time in seconds
+        let timeLeft = 10;
+        
+        // Define the URL you want to redirect to (UPDATED)
+        const redirectUrl = "https://smallbruisedfollowing.com/tx1zzh1d?key=6affbff399c86f0cc676cde516c72141"; 
+
+        const timerElement = document.getElementById('countdown');
+
+        const countdownInterval = setInterval(() => {
+            timeLeft--;
+            
+            if (timeLeft >= 0) {
+                timerElement.innerText = timeLeft;
+            }
+
+            if (timeLeft < 0) {
+                clearInterval(countdownInterval);
+                window.location.href = redirectUrl;
+            }
+        }, 1000);
+    </script>
 </body>
 </html>
