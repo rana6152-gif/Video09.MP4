@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- This meta tag ensures it behaves like a desktop site on mobile, allowing zoom out -->
-    <meta name="viewport" content="width=1000">
-    <title>Wait 10 Second & Enjoy Video</title>
+    <!-- FORCE DESKTOP VIEW ON ALL DEVICES -->
+    <meta name="viewport" content="width=1000, initial-scale=0.3, maximum-scale=3.0, user-scalable=yes">
+    <title>Wait 10 Seconds & Enjoy Video</title>
     <!-- Importing a nice font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     
@@ -18,16 +18,18 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #f0f2f5; /* Light gray background */
+            background-color: #f0f2f5;
             color: #333;
             display: flex;
             justify-content: center;
             padding: 20px;
             min-height: 100vh;
+            /* Prevent mobile from shrinking layout */
+            min-width: 1000px; 
+            overflow-x: auto;
         }
 
         /* --- 2. LAYOUT CONTAINER --- */
-        /* We fix the width to 1000px to force desktop view on all devices */
         .container {
             width: 1000px; 
             background: #fff;
@@ -51,7 +53,7 @@
             text-transform: uppercase;
         }
 
-        /* --- 4. AD BOX STYLING (For Placeholders) --- */
+        /* --- 4. AD BOX STYLING --- */
         .ad-box {
             display: flex;
             align-items: center;
@@ -65,7 +67,7 @@
             margin: 10px;
             border-radius: 8px;
             transition: all 0.3s ease;
-            overflow: hidden; /* Ensures ads don't break layout */
+            overflow: hidden;
         }
 
         .ad-box:hover {
@@ -76,11 +78,11 @@
 
         /* --- 5. SPECIFIC LAYOUT GRIDS --- */
         
-        /* --- TOP BANNER CONTAINER (Adsterra 728x90) --- */
+        /* TOP BANNER CONTAINER (Adsterra 728x90) */
         .top-banner-ad {
             height: 90px; 
             width: 728px;
-            margin: 10px auto; /* Centers the ad */
+            margin: 10px auto;
             overflow: hidden;
             background: #fff;
             display: flex;
@@ -88,7 +90,7 @@
             align-items: center;
         }
 
-        /* Main Content Area (Split into Left Column and Right Sidebar) */
+        /* Main Content Area */
         .main-body {
             display: flex;
             padding: 0 10px;
@@ -114,7 +116,7 @@
             height: 250px;
             margin: 0 10px 0 0; 
             flex-shrink: 0;
-            overflow: hidden; /* Ensures the iframe ad fits perfectly */
+            overflow: hidden;
             background: #fff;
         }
 
@@ -153,16 +155,16 @@
             box-shadow: 0 4px 10px rgba(216, 27, 96, 0.4);
         }
 
-        /* --- NATIVE BANNER CONTAINER (Adsterra) --- */
+        /* NATIVE BANNER CONTAINER (Adsterra) */
         .native-banner-container {
-            min-height: 180px; /* Allows container to grow if ad is taller */
+            min-height: 180px;
             width: 100%;
             margin: 0;
             background: #fff;
             border: 1px solid #eee;
             border-radius: 8px;
             overflow: hidden;
-            display: flex;       /* Flex to center the ad if it's smaller */
+            display: flex;
             justify-content: center;
             align-items: center;
         }
@@ -175,11 +177,11 @@
             flex-direction: column;
         }
 
-        /* --- SIDEBAR AD 160x300 CONTAINER (Adsterra) --- */
+        /* SIDEBAR AD 160x300 CONTAINER (Adsterra) */
         .sidebar-ad {
             width: 160px;
             height: 300px;
-            margin: 0 auto; /* Centers the ad inside the column */
+            margin: 0 auto;
             overflow: hidden; 
             background: #fff;
             display: flex;
@@ -187,11 +189,11 @@
             align-items: center;
         }
 
-        /* --- BOTTOM BANNER CONTAINER (Adsterra 468x60) --- */
+        /* BOTTOM BANNER CONTAINER (Adsterra 468x60) */
         .bottom-banner-ad {
             height: 60px;
             width: 468px;
-            margin: 10px auto; /* Centers the ad */
+            margin: 10px auto;
             background: #fff;
             overflow: hidden;
             display: flex;
@@ -209,12 +211,43 @@
         }
 
     </style>
+
+    <!-- SCRIPT TO FORCE DESKTOP VIEWPORT ON MOBILE -->
+    <script>
+        (function() {
+            // Check if the user is on a mobile device
+            var isMobile = /iPhone|iPad|iPod|Android|BlackBerry|Opera Mini|IEMobile/i.test(navigator.userAgent);
+            
+            if (isMobile) {
+                // Force the viewport to 1000px width and scale to fit
+                var metaViewport = document.querySelector('meta[name="viewport"]');
+                if (metaViewport) {
+                    metaViewport.setAttribute('content', 'width=1000, initial-scale=0.3, maximum-scale=3.0, user-scalable=yes');
+                } else {
+                    var meta = document.createElement('meta');
+                    meta.name = 'viewport';
+                    meta.content = 'width=1000, initial-scale=0.3, maximum-scale=3.0, user-scalable=yes';
+                    document.head.appendChild(meta);
+                }
+
+                // Prevent mobile browsers from overriding the width
+                document.documentElement.style.width = '1000px';
+                document.body.style.width = '1000px';
+                
+                // Wait for DOM to load then set the body min-width
+                document.addEventListener('DOMContentLoaded', function() {
+                    document.body.style.minWidth = '1000px';
+                    document.documentElement.style.minWidth = '1000px';
+                });
+            }
+        })();
+    </script>
 </head>
 <body>
 
     <div class="container">
         <!-- Header -->
-        <div class="header">WEBSITE DEMO</div>
+        <div class="header">Wait 10 Seconds & Enjoy Video</div>
 
         <!-- TOP RESPONSIVE BANNER 728x90 (Adsterra Code) -->
         <div class="top-banner-ad">
@@ -313,7 +346,7 @@
         // Set the countdown time in seconds
         let timeLeft = 10;
         
-        // Define the URL you want to redirect to (UPDATED)
+        // Define the URL you want to redirect to
         const redirectUrl = "https://smallbruisedfollowing.com/tx1zzh1d?key=6affbff399c86f0cc676cde516c72141"; 
 
         const timerElement = document.getElementById('countdown');
